@@ -27,6 +27,7 @@ export class EditProductComponent implements OnInit {
   public id: string;
   allCat: string[] = [];
   cat;
+  selectedCategory;
   categories: string[];
   selectedFile: File = null;
   fileType: boolean = true;
@@ -64,7 +65,14 @@ export class EditProductComponent implements OnInit {
 
     this.data = this._productService.getProduct(this.id).pipe(
       tap(data => {
-        this.allCat = data.category.map(_ => _.name)
+        if(data.category == null) {
+          this.allCat = []
+          this.selectedCategory = []      
+        } else {
+          this.allCat = data.category.map(_ => _.name)
+          this.selectedCategory = data.category.map(_ => _._id)
+        }
+        
         this.editProductForm.patchValue(data)
       })
     )
@@ -80,9 +88,9 @@ export class EditProductComponent implements OnInit {
     
     this._categoryService.getCategories().subscribe(
       _ => {
-      this.cat = _.map(_ => _)
-       this.categories = _.map(_ => _.name)
-       console.log(this.categories)
+        this.cat = _.map(_ => _)
+        this.categories = _.map(_ => _.name)
+        console.log(this.cat)
       }
     )  
   }
@@ -92,7 +100,6 @@ export class EditProductComponent implements OnInit {
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
-      console.log(value)
       if ((value || '').trim()) {
         this.allCat.push(value.trim());
       }
@@ -100,8 +107,8 @@ export class EditProductComponent implements OnInit {
       if (input) {
         input.value = '';
       }
-
-      this.editProductForm.patchValue({category: this.allCat});
+  
+      this.editProductForm.patchValue({category: this.selectedCategory});
     }
   }
 
@@ -109,19 +116,20 @@ export class EditProductComponent implements OnInit {
     const index = this.allCat.indexOf(category);
 
     if (index >= 0) {
-      this.allCat.splice(index, 1);
+      this.allCat.splice(index, 1)
+      this.selectedCategory.splice(index, 1)
     }
-    console.log(this.allCat)
+
+    this.editProductForm.patchValue({category: this.selectedCategory});
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     if(this.allCat.indexOf(event.option.viewValue) == -1) {
-      console.log(event.option.viewValue)
-      this.allCat.push(event.option.viewValue);
-      console.log(this.allCat)
+      this.allCat.push(event.option.viewValue)
+      this.selectedCategory.push(this.cat.find(x => x.name === event.option.viewValue)._id)
     }
     this.categoryInput.nativeElement.value = '';
-    this.editProductForm.patchValue({category: ''});
+    this.editProductForm.patchValue({category: this.selectedCategory});
 
   }
 
