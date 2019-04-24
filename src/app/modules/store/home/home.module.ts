@@ -6,7 +6,7 @@ import { HomeRoutingModule } from './home-routing.module'
 import { MaterialModule } from 'src/app/_sharing/modules/material.module'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home.component'
 import { ProductComponent } from './product/product.component'
 
 

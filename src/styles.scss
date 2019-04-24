@@ -16,6 +16,10 @@
 @import "./styles/add-product";
 @import "./styles/admin-table";
 
+
+@import "./src/app/modules/auth/login/login.component";
+@import "./src/app/app.component";
+
 html,
 body,
 .app-conteiner {

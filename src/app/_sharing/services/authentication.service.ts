@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 
 import { User } from '../models';
 import * as globals from '../globals';
+import * as jwt_decode from "jwt-decode";
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -32,9 +34,32 @@ export class AuthenticationService {
         return user;
       }));
   }
+  
+  isLogin() {
+		return localStorage.getItem('currentUser') != null;
+	}
 
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+
+  getRole() {
+    if (JSON.parse(localStorage.getItem('currentUser'))) {
+      const role = this.getDecodedAccessToken()
+      return role.role == 'admin' || role.role == 'super'
+    }
+    return false
+  }
+
+  getDecodedAccessToken(): any {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    
+    try {
+      return jwt_decode(currentUser.token);
+    }
+    catch (Error) {
+      return null;
+    }
   }
 }

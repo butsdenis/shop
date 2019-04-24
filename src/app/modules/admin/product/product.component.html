@@ -1,0 +1,59 @@
+<div class="admin-product-wrapper">
+
+  <a mat-raised-button routerLink="add-product" class="btn__add-product" color="primary">Add product</a>
+  <div class="admin-table mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="_id">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> _id </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product._id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Image </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> 
+          <img src="http://localhost:3000/{{product.image}} " height="100" alt="product image">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="text">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Text </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.text}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.price}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.category}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let product">
+        <a mat-raised-button routerLink="{{product._id}}">
+         Edit
+        </a>
+        <button mat-raised-button color="warn">
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>
