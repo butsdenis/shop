@@ -1,0 +1,95 @@
+/***** Colors *****/
+$color-white:             #FFFFFF;
+$color-black:             #000000;
+$color-red:               #E53935;
+
+$color-50:                #ECEFF1;
+$color-100:               #CFD8DC;
+$color-200:               #B0BEC5;
+$color-300:               #90A4AE;
+$color-400:               #78909c;
+$color-500:               #607D8B;
+$color-600:               #546E7A;
+$color-700:               #455A64;
+$color-800:               #37474F;
+$color-900:               #263238;
+
+
+/***** Font-size *****/
+$fs-xs:                     14px;
+$fs-s:                      16px;
+$fs-m:                      18px;
+$fs-l:                      20px;
+$fs-xl:                     22px;
+$fs-xxl:                    24px;
+
+
+/***** Sizing *****/
+$s-xs:                      5px;
+$s-s:                       10px;
+$s-m:                       15px;
+$s-l:                       20px;
+$s-xl:                      25px;
+$s-xxl:                     30px;
+$s-3xl:                     35px;
+
+
+/***** Padding *****/
+$p-xs:                      5px;
+$p-s:                       10px;
+$p-m:                       15px;
+$p-l:                       20px;
+$p-xl:                      25px;
+$p-xxl:                     30px;
+$p-3xl:                     35px;
+
+
+/***** Margin *****/
+$m-xs:                      5px;
+$m-s:                       10px;
+$m-m:                       15px;
+$m-l:                       20px;
+$m-xl:                      25px;
+$m-xxl:                     30px;
+$m-3xl:                     35px;
+
+
+
+/***** Link *****/
+$c-link:                    $color-900;
+$c-link-visited:            $color-600;
+
+
+/***** Text *****/
+$fs-text-def:               $fs-s;
+$c-text-def:                $color-900;
+
+
+/***** Card *****/
+$m-card:                    $m-xxl;
+$m-card-content:            $m-s;
+$p-card:                    $p-l;
+$p-btn-card:                $p-s;
+$p-text-btn-card:           $p-xs;
+$h-card-img:                200px;
+$h-card-cont:               75px;
+$h-card-cont-in:            100%;
+$w-card-cont-in:            150px;
+$w-btn-group-card:          290px;
+$w-btn-card:                100%;
+$s-border-card:             1px;
+$b-rad-card:                10px;    
+$min-w-card:                290px;
+
+$c-border-card:             $color-100;
+$c-text-price:              $color-red;
+$bgc-btn-card:              $color-100;        
+$fs-link-card:              $fs-xl;
+$fs-text-price:             $fs-xxl;
+
+
+/***** add-product *****/
+$w-add-product:             560px;
+$mt-add-product-item:       $m-l;
+$w-btn:                     100px;
+$mt-btn:                    $m-xxl;

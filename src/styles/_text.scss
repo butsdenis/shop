@@ -1,0 +1,10 @@
+.text {
+  font-size: $fs-text-def;
+  color: $c-text-def;
+}
+
+.text--price {
+  font-weight: bold; 
+  color: $c-text-price;
+  font-size: $fs-text-price;
+}
