@@ -1,4 +1,4 @@
-<form *ngIf="data | async; else loading" [formGroup]="editProductForm" class="add-product">
+<form *ngIf="data | async; else loading" [formGroup]="editProductForm" class="add-product" (ngSubmit)="onSubmit()">
   <mat-form-field class="add-product__item">
     <input matInput placeholder="Title" formControlName="title">
     <mat-error *ngIf="!editProductForm.get('title').valid && editProductForm.get('title').touched">
@@ -70,10 +70,10 @@
   </mat-form-field>
 
 
-  <input type="file" (change)="onFileSelected($event)" formControlName="file">
+  <!-- <input type="file" (change)="onFileSelected($event)" formControlName="image">
   <span *ngIf="!fileType" style="color: red">
     Wrong file type. Only jpg/jpeg or png
-  </span>
+  </span> -->
 
 
   <button class="btn__add-product" mat-raised-button color="primary">Upload</button>

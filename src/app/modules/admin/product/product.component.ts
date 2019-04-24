@@ -25,7 +25,6 @@ export class ProductComponent implements OnInit {
     this._productService.getProducts()
       .subscribe(res => {
         this.dataSource.data = res;
-        console.log(this.dataSource.data)
       })
   }
 

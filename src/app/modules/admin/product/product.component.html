@@ -33,7 +33,11 @@
 
       <ng-container matColumnDef="category">
         <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Category </mat-header-cell>
-        <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.category}} </mat-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let product">
+          <div *ngFor="let category of product.category">
+              {{category.name}} <br>
+          </div>
+        </mat-cell>
       </ng-container>
 
 

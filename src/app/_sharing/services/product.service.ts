@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { Product } from '../models/index'
 import * as globals from '../globals'
-import { NgForm } from '@angular/forms'
+import { NgForm, FormGroup } from '@angular/forms'
 
 
 @Injectable({
@@ -34,6 +34,10 @@ export class ProductService {
 
   public addProduct(product: NgForm): Observable<Product> {
     return this._http.post<Product>(this._apiUrl, product)
+  }
+
+  public editProduct(product: Product, id: string): Observable<Product> {
+    return this._http.patch<Product>(`${this._apiUrl}/${id}`, product)
   }
 
 }

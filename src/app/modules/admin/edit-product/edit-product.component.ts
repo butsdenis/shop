@@ -26,6 +26,7 @@ export class EditProductComponent implements OnInit {
   public data: Observable<Product>;
   public id: string;
   allCat: string[] = [];
+  cat;
   categories: string[];
   selectedFile: File = null;
   fileType: boolean = true;
@@ -58,11 +59,12 @@ export class EditProductComponent implements OnInit {
         Validators.required,
         Validators.pattern('^(0|[1-9][0-9]*)$')
       ])],
-      file: ['', Validators.required]
+      image: ['', Validators.required]
     })
 
     this.data = this._productService.getProduct(this.id).pipe(
       tap(data => {
+        this.allCat = data.category.map(_ => _.name)
         this.editProductForm.patchValue(data)
       })
     )
@@ -78,7 +80,9 @@ export class EditProductComponent implements OnInit {
     
     this._categoryService.getCategories().subscribe(
       _ => {
+      this.cat = _.map(_ => _)
        this.categories = _.map(_ => _.name)
+       console.log(this.categories)
       }
     )  
   }
@@ -88,7 +92,7 @@ export class EditProductComponent implements OnInit {
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
-
+      console.log(value)
       if ((value || '').trim()) {
         this.allCat.push(value.trim());
       }
@@ -97,7 +101,7 @@ export class EditProductComponent implements OnInit {
         input.value = '';
       }
 
-      this.editProductForm.patchValue({category: ''});
+      this.editProductForm.patchValue({category: this.allCat});
     }
   }
 
@@ -107,11 +111,14 @@ export class EditProductComponent implements OnInit {
     if (index >= 0) {
       this.allCat.splice(index, 1);
     }
+    console.log(this.allCat)
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     if(this.allCat.indexOf(event.option.viewValue) == -1) {
+      console.log(event.option.viewValue)
       this.allCat.push(event.option.viewValue);
+      console.log(this.allCat)
     }
     this.categoryInput.nativeElement.value = '';
     this.editProductForm.patchValue({category: ''});
@@ -122,6 +129,13 @@ export class EditProductComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.categories.filter(category => category.toLowerCase().includes(filterValue));
+  }
+
+  onSubmit() {
+    this._productService.editProduct(this.editProductForm.value, this.id)
+      .subscribe(_ => {
+        console.log(_)
+      })
   }
 
 }
