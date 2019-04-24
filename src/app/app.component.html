@@ -2,7 +2,7 @@
   <a routerLink="home" class="link text--white">Shopping cart</a>
   <div>
     <a *ngIf="!isLogged()" mat-button routerLink="auth">Login</a>
-    <a *ngIf="getRole() && isLogged()" mat-button>Admin Dasboard</a>
+    <a routerLink="admin" *ngIf="getRole() && isLogged()" mat-button>Admin Dasboard</a>
     <a *ngIf="isLogged()" mat-button>User info</a>
     <a *ngIf="isLogged()" mat-button (click)="logOut()">Log out</a>
   </div>

@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: './modules/auth/auth.module#AuthModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: './modules/admin/admin-panel.module#AdminPanelModule'
   }
 ];
 
