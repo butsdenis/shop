@@ -47,7 +47,7 @@
         <a mat-raised-button routerLink="{{product._id}}">
          Edit
         </a>
-        <button mat-raised-button color="warn">
+        <button mat-raised-button color="warn" (click)="deleteProduct(product._id)">
           Delete
         </button>
       </mat-cell>

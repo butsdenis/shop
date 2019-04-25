@@ -1,0 +1,12 @@
+<a routerLink="/admin/category" class="btn__add-product" mat-raised-button color="primary">Back</a>
+<form [formGroup]="addCategoryForm" class="add-product" (ngSubmit)="onSubmit()">
+  <mat-form-field class="add-product__item">
+    <input matInput placeholder="Name" formControlName="name">
+    <mat-error *ngIf="!addCategoryForm.get('name').valid && addCategoryForm.get('name').touched">
+      Please enter name
+    </mat-error>
+  </mat-form-field>
+
+  <button class="btn__add-product" mat-raised-button color="primary">Add</button>
+
+</form>

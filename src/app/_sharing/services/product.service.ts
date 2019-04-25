@@ -40,4 +40,8 @@ export class ProductService {
     return this._http.patch<Product>(`${this._apiUrl}/${id}`, product)
   }
 
+  public deleteProduct(id: string){
+    return this._http.delete(`${this._apiUrl}/${id}`)
+  }
+
 }

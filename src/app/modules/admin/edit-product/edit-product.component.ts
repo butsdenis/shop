@@ -65,6 +65,7 @@ export class EditProductComponent implements OnInit {
 
     this.data = this._productService.getProduct(this.id).pipe(
       tap(data => {
+
         if(data.category == null) {
           this.allCat = []
           this.selectedCategory = []      
@@ -90,7 +91,6 @@ export class EditProductComponent implements OnInit {
       _ => {
         this.cat = _.map(_ => _)
         this.categories = _.map(_ => _.name)
-        console.log(this.cat)
       }
     )  
   }
@@ -133,10 +133,16 @@ export class EditProductComponent implements OnInit {
 
   }
 
-  private _filter(value: string): string[] {
+  private _filter(value) {
+    console.log(value)
     const filterValue = value.toLowerCase();
 
     return this.categories.filter(category => category.toLowerCase().includes(filterValue));
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    
   }
 
   onSubmit() {

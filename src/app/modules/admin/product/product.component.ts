@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { Product } from 'src/app/_sharing/models';
 import { ProductService } from 'src/app/_sharing/services';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-product',
@@ -26,6 +26,16 @@ export class ProductComponent implements OnInit {
       .subscribe(res => {
         this.dataSource.data = res;
       })
+  }
+
+  public deleteProduct(id: string) {
+    if (confirm(`Are you sure you want to delete the product. This cannot be undone.`)) {
+      this._productService.deleteProduct(id).subscribe(
+        res => {
+          this.getProducts();
+        }
+      )
+    }
   }
 
 }

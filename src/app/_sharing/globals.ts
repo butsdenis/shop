@@ -3,3 +3,5 @@ export const _login = 'users/login'
 export const _category='category';
 export const _product='products';
 export const _productsByCategory='products/category';
+export const _users='users';
+export const _role='role';

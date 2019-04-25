@@ -7,7 +7,8 @@
 	</mat-form-field>
 
 	<mat-form-field>
-		<input type="password" matInput placeholder="Password" formControlName="password">
+		<input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password">
+		<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 		<mat-error *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
 			Please enter password
 		</mat-error>

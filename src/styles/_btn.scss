@@ -33,4 +33,6 @@
 .mat-raised-button.btn__add-product {
   width: $w-btn;
   margin-top: $m-xxl;
+  display: flex;
+  justify-content: center;
 }
