@@ -7,7 +7,8 @@ import { MaterialModule } from 'src/app/_sharing/modules/material.module'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { HomeComponent } from './home.component'
-import { ProductComponent } from './product/product.component'
+import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component'
 
 
 
@@ -15,7 +16,8 @@ import { ProductComponent } from './product/product.component'
 @NgModule({
   declarations: [
     HomeComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

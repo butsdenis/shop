@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of let item of shoppingCartItems">
+      <div class="card">
+        <div class="card__header">
+          <a href="#" class="link link--card__header">
+            {{product.title}}
+          </a>
+        </div>
+        <img class="card__img" src="{{_api}}{{product.image}}" alt="device">
+        <div class="card__content">
+          <div class="card__content-inner">
+            <span class="text text--card">
+              {{product.text}}
+            </span>
+          </div>
+
+        </div>
+        <div class="card__footer">
+          <div class="card__price">
+            <span class="text text--price">
+              {{product.price}}$
+            </span>
+          </div>
+          <div class="card__price">
+            <span class="text text--price">
+              {{product.quantity}}
+            </span>
+          </div>
+          <div class="btn-group btn-group--card">
+            <button class="btn btn--card" (click)="removeItem(product)">
+              <span class="text">Remove</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

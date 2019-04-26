@@ -6,5 +6,6 @@ export interface Product {
   text: string;
   price: number;
   category: Array<any>;
+  quantity: number;
   
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Product } from 'src/app/_sharing/models'
-import { ProductService } from 'src/app/_sharing/services'
+import { ProductService, CartService } from 'src/app/_sharing/services'
 import * as global from 'src/app/_sharing/globals'
 
 @Component({
@@ -16,7 +16,8 @@ export class ProductComponent implements OnInit {
   private _api: string = global._api
 
   constructor(
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -32,6 +33,10 @@ export class ProductComponent implements OnInit {
       })
     }
     
+  }
+
+  public addProduct(product: Product) {
+    this._cartService.addToCart(product)
   }
 
 }

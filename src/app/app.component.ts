@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './_sharing/services';
+import { AuthenticationService, CartService } from './_sharing/services';
+import { Observable } from 'rxjs';
+import { Product } from './_sharing/models';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,21 @@ import { AuthenticationService } from './_sharing/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  public shoppingCartItems$: Observable<Product[]>;
+
   constructor(
-    private _authService: AuthenticationService
-  ) {}
+    private _authService: AuthenticationService,
+    private _cartService: CartService
+  ) {
+
+    this.shoppingCartItems$ = this
+      ._cartService
+      .getItems();
+
+    this.shoppingCartItems$.subscribe(_ => _);
+
+  }
 
   public isLogged = () => {
     return this._authService.isLogin()

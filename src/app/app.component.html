@@ -1,5 +1,7 @@
 <mat-toolbar color="primary" class="app__nav">
   <a routerLink="home" class="link text--white">Shopping cart</a>
+  <a mat-button routerLink="home/cart">
+    <mat-icon>shopping_cart</mat-icon>{{(shoppingCartItems$ | async).length}}</a>
   <div>
     <a *ngIf="!isLogged()" mat-button routerLink="auth">Login</a>
     <a routerLink="admin" *ngIf="getRole() && isLogged()" mat-button>Admin Dasboard</a>
