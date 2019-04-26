@@ -9,33 +9,30 @@ import * as global from 'src/app/_sharing/globals';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class CartComponent implements OnInit {
   
   public shoppingCartItems$: Observable<Product[]> = of([])
   public shoppingCartItems: Product[] = []
-  public quntity: number
-  subscription: Subscription
+
 
   private _api: string = global._api
 
-  constructor(private _cartService: CartService) {
-    this.shoppingCartItems$ = this._cartService.getItems()
+  constructor(private _cartService: CartService) {}
 
-    this.subscription = this.shoppingCartItems$
+  ngOnInit() {
+    this.shoppingCartItems$ = this._cartService.getItems()
+    this.shoppingCartItems$
       .subscribe(_ => {
           _.forEach(element => {
             if(this.shoppingCartItems.map(_ => _._id).indexOf(element._id) === -1) {
+              element.quantity = 1
               this.shoppingCartItems.push(element)
-            }
+            } else element.quantity ++ 
             
           });
-          //this.shoppingCartItems = _
         }
       )
-  }
 
-  ngOnInit() {
-    
   }
 
 
@@ -43,14 +40,9 @@ export class CartComponent implements OnInit, OnDestroy {
     this.shoppingCartItems.splice(
       this.shoppingCartItems.findIndex(x => x._id === item._id),
       1
-    ) 
+    )
     this._cartService.removeFromCart(item)
-    console.log(this.shoppingCartItems)
-    
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe()
+  
   }
 
 }
