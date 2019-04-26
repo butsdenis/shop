@@ -33,6 +33,7 @@ export class ProductService {
   }
 
   public addProduct(product: NgForm): Observable<Product> {
+    console.log(product)
     return this._http.post<Product>(this._apiUrl, product)
   }
 
