@@ -10,9 +10,9 @@ import { HomeComponent } from './home.component'
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component'
+import { TextMaskModule } from 'angular2-text-mask';
 
-
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,10 @@ import { CheckoutComponent } from './checkout/checkout.component'
     HomeRoutingModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TextMaskModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

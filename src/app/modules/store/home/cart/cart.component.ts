@@ -21,7 +21,6 @@ export class CartComponent implements OnInit {
   public price: number
 
   private _subscription : Subscription
-
   private _api: string = global._api
 
   constructor(private _cartService: CartService) {}
