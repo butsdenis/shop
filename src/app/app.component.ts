@@ -12,17 +12,13 @@ export class AppComponent {
 
   public shoppingCartItems$: Observable<Product[]>;
 
+
   constructor(
     private _authService: AuthenticationService,
     private _cartService: CartService
   ) {
 
-    this.shoppingCartItems$ = this
-      ._cartService
-      .getItems();
-
-    this.shoppingCartItems$.subscribe(_ => _);
-
+    this.shoppingCartItems$ = this._cartService.getItems();
   }
 
   public isLogged = () => {

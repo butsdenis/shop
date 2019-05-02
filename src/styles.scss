@@ -19,8 +19,9 @@
 
 @import "./src/app/modules/auth/login/login.component";
 
-@import "./app/modules/admin/user/user.component.scss";
+@import "./app/modules/admin/user/user.component";
 @import "./src/app/app.component";
+@import "./app/modules/store/home/cart/cart.component";
 
 html,
 body,

@@ -8,7 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { HomeComponent } from './home.component'
 import { ProductComponent } from './product/product.component';
-import { CartComponent } from './cart/cart.component'
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component'
 
 
 
@@ -17,7 +18,8 @@ import { CartComponent } from './cart/cart.component'
   declarations: [
     HomeComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
