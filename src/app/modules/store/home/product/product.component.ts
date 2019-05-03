@@ -39,9 +39,4 @@ export class ProductComponent implements OnInit {
     this._cartService.addToCart(product)
   }
 
-  // public redirectToProduct = (_id: string) => {
-  //   let url: string = `/products/${_id}`;
-  //   this._router.navigate([url]);
-  // }
-
 }

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { Product } from '../models/index'
 import * as globals from '../globals'
-import { NgForm, FormGroup } from '@angular/forms'
+import { NgForm } from '@angular/forms'
 
 
 @Injectable({

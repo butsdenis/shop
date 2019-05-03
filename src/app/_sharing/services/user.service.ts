@@ -23,6 +23,10 @@ export class UserService {
     return this._http.get<User[]>(this._apiUrl)
   }
 
+  public getUser(): Observable<User[]> {
+    return this._http.get<User[]>(`${this._apiUrl}/me`)
+  }
+
   public editUser(category: User, id: string): Observable<User> {
     return this._http.patch<User>(`${this._apiUrl}/${id}`, category)
   }

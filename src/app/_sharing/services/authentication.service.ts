@@ -52,6 +52,15 @@ export class AuthenticationService {
     return false
   }
 
+  checkRole() {
+    if (JSON.parse(localStorage.getItem('currentUser'))) {
+      const role = this.getDecodedAccessToken()
+      return role.role == 'super'
+    }
+    return false
+  }
+
+
   getDecodedAccessToken(): any {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
     

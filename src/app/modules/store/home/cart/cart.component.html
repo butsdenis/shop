@@ -7,7 +7,10 @@
 
           <ng-container matColumnDef="title">
             <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Title </mat-header-cell>
-            <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.title}} </mat-cell>
+            <mat-cell class="admin-tabel__cell" *matCellDef="let product"> 
+            <a routerLink='../product/product._id'>{{product.title}}</a> 
+
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="quantity">
@@ -45,7 +48,7 @@
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of let item of shoppingCartItems">
       <div class="card">
         <div class="card__header">
-          <a href="#" class="link link--card__header">
+          <a routerLink='../product/product._id' class="link link--card__header">
             {{product.title}}
           </a>
         </div>

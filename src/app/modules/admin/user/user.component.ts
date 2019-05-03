@@ -12,9 +12,10 @@ import { UserService } from 'src/app/_sharing/services'
 
 export class UserComponent implements OnInit {
 
-  public dataSource = new MatTableDataSource<User>();
+  public dataSource = new MatTableDataSource<User>()
   public displayedColumns: string[] = ['_id', 'name', 'role', 'actions']
-  selectedValue: string;
+  selectedValue: string
+  user
   role = [
     {value: 'editor', viewValue: 'Editor'},
     {value: 'admin', viewValue: 'Admin'},
@@ -23,17 +24,19 @@ export class UserComponent implements OnInit {
 
   constructor(
     private _userService: UserService
+    
   ) { }
 
   ngOnInit() {
-    this.getUsers()
+      this.getUsers()
   }
 
   public getUsers() {
-    this._userService.getUsers()
+      this._userService.getUsers()
       .subscribe(res => {
         this.dataSource.data = res;
-      })
+      },
+      error => console.log(error)) 
   }
 
   public deleteUser(id: string) {

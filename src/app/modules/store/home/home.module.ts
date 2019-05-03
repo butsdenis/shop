@@ -11,15 +11,18 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component'
 import { TextMaskModule } from 'angular2-text-mask';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProductComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     TextMaskModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StarRatingModule.forRoot()
   ]
 })
 export class HomeModule { }
