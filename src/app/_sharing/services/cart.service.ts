@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../models';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { Product } from '../models'
+import { Observable, BehaviorSubject } from 'rxjs'
 
 
 @Injectable({
@@ -9,8 +9,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 export class CartService {
   
-  private itemsInCartSubject: BehaviorSubject<Product[]> = new BehaviorSubject([]);
-  private itemsInCart: Product[] = [];
+  private itemsInCartSubject: BehaviorSubject<Product[]> = new BehaviorSubject([])
+  private itemsInCart: Product[] = []
   
   constructor() {
     this.itemsInCartSubject.subscribe(_ => this.itemsInCart = _)
@@ -20,21 +20,21 @@ export class CartService {
     const added = this.itemsInCart.find(i => i._id == item._id)
     if(!added) {
       item.quantity = 1;
-      this.itemsInCartSubject.next([...this.itemsInCart, item]);
+      this.itemsInCartSubject.next([...this.itemsInCart, item])
     } else {
       this.itemsInCart.find(i => i._id == item._id).quantity++
-      this.itemsInCartSubject.next([...this.itemsInCart]);
+      this.itemsInCartSubject.next([...this.itemsInCart])
     }
   }
 
   public getItems(): Observable<Product[]> {
-    return this.itemsInCartSubject;
+    return this.itemsInCartSubject
   }
 
   public removeFromCart(item: Product) {
-    const currentItems = [...this.itemsInCart];
-    const itemsWithoutRemoved = currentItems.filter(_ => _._id !== item._id);
-    this.itemsInCartSubject.next(itemsWithoutRemoved);
+    const currentItems = [...this.itemsInCart]
+    const itemsWithoutRemoved = currentItems.filter(_ => _._id !== item._id)
+    this.itemsInCartSubject.next(itemsWithoutRemoved)
   }
   
 }

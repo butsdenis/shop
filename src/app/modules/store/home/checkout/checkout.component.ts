@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Product } from 'src/app/_sharing/models';
 import { Observable, of, Subscription } from 'rxjs';
-import { CartService } from 'src/app/_sharing/services';
+import { CartService, CheckoutService } from 'src/app/_sharing/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -31,7 +32,9 @@ export class CheckoutComponent implements OnInit {
 
   constructor(	
     private formBuilder: FormBuilder,
-    private _cartService: CartService) { }
+    private router: Router,
+    private _cartService: CartService,
+    private _checkoutService: CheckoutService) { }
 
   ngOnInit() {
 
@@ -68,6 +71,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.loading = true;
     this.shoppingCartItems.forEach(elem => {
       const order = {
         _id: elem._id,
@@ -75,9 +79,15 @@ export class CheckoutComponent implements OnInit {
         quantity: elem.quantity
       }
       this.order.push(order)
-
     })
-    console.log({user: this.buyingForm.value, order: this.order})
+    this._checkoutService.sendOrder(this.buyingForm.value,this.order)
+      .subscribe(
+        _ => {
+          this.router.navigate(['/home'])
+        }, 
+        error => {
+          this.loading = false
+        })
   }
 
   ngOnDestroy(): void {
