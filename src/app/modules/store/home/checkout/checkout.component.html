@@ -5,7 +5,7 @@
 
         <ng-container matColumnDef="title">
           <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Title </mat-header-cell>
-          <mat-cell class="admin-tabel__cell" *matCellDef="let product"> <a routerLink='../product/product._id'>{{product.title}}</a> </mat-cell>
+          <mat-cell class="admin-tabel__cell" *matCellDef="let product"> <a routerLink='../product/{{product._id}}'>{{product.title}}</a> </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="quantity">

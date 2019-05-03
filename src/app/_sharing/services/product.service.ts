@@ -32,12 +32,11 @@ export class ProductService {
     return this._http.get<Product[]>(products)
   }
 
-  public addProduct(product: NgForm): Observable<Product> {
-    console.log(product)
+  public addProduct(product): Observable<Product> {
     return this._http.post<Product>(this._apiUrl, product)
   }
 
-  public editProduct(product: Product, id: string): Observable<Product> {
+  public editProduct(product, id: string): Observable<Product> {
     return this._http.patch<Product>(`${this._apiUrl}/${id}`, product)
   }
 

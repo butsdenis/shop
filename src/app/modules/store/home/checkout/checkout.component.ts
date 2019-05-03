@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   public shoppingCartItems$: Observable<Product[]> = of([])
   public shoppingCartItems: Product[] = []
   public price: number
+  public order: Array<any> = []
 
   public myModel = ''
   public mask = ['(', /[0-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -64,6 +65,19 @@ export class CheckoutComponent implements OnInit {
     this._cartService.removeFromCart(item)
     this.getTotalAmount()
   
+  }
+
+  public onSubmit() {
+    this.shoppingCartItems.forEach(elem => {
+      const order = {
+        _id: elem._id,
+        price: elem.price,
+        quantity: elem.quantity
+      }
+      this.order.push(order)
+
+    })
+    console.log({user: this.buyingForm.value, order: this.order})
   }
 
   ngOnDestroy(): void {

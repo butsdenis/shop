@@ -71,7 +71,7 @@
   </mat-form-field>
 
 
-  <input type="file" (change)="onFileSelected($event)">
+  <input type="file" name='image' (change)="onFileSelected($event)">
   <span *ngIf="!fileType" style="color: red">
     Wrong file type. Only jpg/jpeg or png
   </span>

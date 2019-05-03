@@ -29,7 +29,6 @@ export class EditProductComponent implements OnInit {
   cat;
   selectedCategory;
   categories: string[];
-  selectedFile: File = null;
   fileType: boolean = true;
   filteredCategories: Observable<string[]>;
 
@@ -140,15 +139,24 @@ export class EditProductComponent implements OnInit {
     return this.categories.filter(category => category.toLowerCase().includes(filterValue));
   }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+  public onFileSelected(event) {
+    if(event.target.files.length > 0) {
+      let file = event.target.files[0];
+      this.editProductForm.get('image').setValue(file)
+    }
     
   }
 
   onSubmit() {
-    this._productService.editProduct(this.editProductForm.value, this.id)
+    const formData = new FormData();
+    formData.append('image', this.editProductForm.get('image').value)
+    formData.append('category', JSON.stringify(this.editProductForm.get('category').value))
+    formData.append('title', this.editProductForm.get('title').value)
+    formData.append('text', this.editProductForm.get('text').value)
+    formData.append('price', this.editProductForm.get('price').value)
+    this._productService.editProduct(formData, this.id)
       .subscribe(_ => {
-        console.log(_)
+        console.log(_), error => console.log(error)
       })
   }
 

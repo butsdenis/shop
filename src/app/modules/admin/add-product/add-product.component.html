@@ -17,7 +17,7 @@
   <mat-form-field class="add-product__item">
     <mat-label>Categories</mat-label>
     <mat-select formControlName="category" multiple>
-      <mat-option *ngFor="let category of categoryList" [value]="category">{{category.name}}</mat-option>
+      <mat-option *ngFor="let category of categoryList" [value]="category._id">{{category.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="add-product__item">
@@ -31,9 +31,9 @@
   </mat-form-field>
 
 
-  <input type="file" (change)="onFileChange($event)">
-  <span *ngIf="!fileType" style="color: red">
-    Wrong file type. Only jpg/jpeg or png
+  <input type="file" name="image" (change)="onFileSelect($event)">
+  <span *ngIf="error" style="color: red">
+    Please upload image
   </span>
 
 
