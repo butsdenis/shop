@@ -74,8 +74,7 @@ export class CheckoutComponent implements OnInit {
     this.loading = true;
     this.shoppingCartItems.forEach(elem => {
       const order = {
-        _id: elem._id,
-        price: elem.price,
+        product_id: elem._id,
         quantity: elem.quantity
       }
       this.order.push(order)
@@ -83,7 +82,9 @@ export class CheckoutComponent implements OnInit {
     this._checkoutService.sendOrder(this.buyingForm.value,this.order)
       .subscribe(
         _ => {
+          this._cartService.removeAll()
           this.router.navigate(['/home'])
+          
         }, 
         error => {
           this.loading = false

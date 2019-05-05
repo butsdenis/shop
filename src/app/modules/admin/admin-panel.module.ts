@@ -13,6 +13,7 @@ import { CategoryComponent } from './category/category/category.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { UserComponent } from './user/user.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 
@@ -28,7 +29,8 @@ import { UserComponent } from './user/user.component';
     CategoryComponent,
     EditCategoryComponent,
     AddCategoryComponent,
-    UserComponent
+    UserComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

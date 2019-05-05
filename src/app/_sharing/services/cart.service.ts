@@ -37,4 +37,7 @@ export class CartService {
     this.itemsInCartSubject.next(itemsWithoutRemoved)
   }
   
+  public removeAll() {
+    this.itemsInCartSubject.next([])
+  }
 }

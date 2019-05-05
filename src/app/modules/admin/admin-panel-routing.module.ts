@@ -10,6 +10,7 @@ import { CategoryComponent } from './category/category/category.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { UserComponent } from './user/user.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,9 @@ const routes: Routes = [
       },
       {
         path: 'users', component: UserComponent
+      },
+      {
+        path: 'order', component: OrdersComponent
       }
   ]
   }

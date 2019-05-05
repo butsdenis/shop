@@ -1,0 +1,19 @@
+.card__order {
+  margin: 24px;
+}
+
+.order__header {
+  display: flex;
+  align-items: center;
+}
+
+.card__order .mat-card-content {
+  margin-right: 24px;
+}
+
+.order__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
