@@ -1,9 +1,9 @@
 export interface Order {
   
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
+  _id: string
+  name: string
+  email: string
+  phone: string
   order: [
     {
       _id: string,
@@ -15,5 +15,5 @@ export interface Order {
       quantity: number
     }
   ]
-  
+  status: string
 }

@@ -9,17 +9,31 @@ import { Order } from 'src/app/_sharing/models';
 })
 export class OrdersComponent implements OnInit {
 
-  orders: Order;
+  orders: Order
+  statuses = [
+    {value: 'expect', viewValue: 'Expected'},
+    {value: 'complited', viewValue: 'Complited'},
+    {value: 'canceled', viewValue: 'Canceled'}
+  ];
   
   constructor(
     private _checkoutService: CheckoutService
   ) { }
 
   ngOnInit() {
-    this._checkoutService.getOrders()
+    this.getOrders()
+  }
+
+  public selectStatus(event, id:string) {
+    this._checkoutService.changeStatus(event.value, id)
     .subscribe(_ => {
-      this.orders = _
-      console.log(_)})
+      this.getOrders()
+    })
+  }
+
+  public getOrders() {
+    this._checkoutService.getOrders()
+    .subscribe(_ => this.orders = _)
   }
 
 }

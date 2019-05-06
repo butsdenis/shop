@@ -41,7 +41,8 @@ export class CheckoutComponent implements OnInit {
     this.buyingForm = this.formBuilder.group({
       name: ['', Validators.required],
 			email: ['', [Validators.required, Validators.email]],
-			phone: ['', Validators.required]
+      phone: ['', Validators.required],
+      status: ['expect']
 		});
 
     this.shoppingCartItems$ = this._cartService.getItems()
