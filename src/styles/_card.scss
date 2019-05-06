@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: $p-card;
+  margin-bottom: $m-card; 
+  width: $min-w-card;
+  border: $s-border-card solid $c-border-card;
+  border-radius: $b-rad-card;
+  .card__img {
+    height: $h-card-img;
+  }
+  .card__header {
+    margin-bottom: $m-card;
+  }
+  .card__content {
+    margin-top: $m-card-content;
+    height: $h-card-cont;
+    overflow: hidden;
+    .card__content-inner {
+      column-width: $w-card-cont-in;
+      height: $h-card-cont-in;
+      text-align: center
+    }
+  }
+  .card__price {
+    display: flex;
+    justify-content: center;
+    margin: $m-card 0 $m-card 0;
+  }
+}

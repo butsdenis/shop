@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 checkout">
+
+      <div class="admin-table mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container matColumnDef="title">
+            <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell class="admin-tabel__cell" *matCellDef="let product"> 
+            <a routerLink='../product/{{product._id}}'>{{product.title}}</a> 
+
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="quantity">
+            <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Quantity </mat-header-cell>
+            <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.quantity}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.quantity * product.price}}$
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let product">
+              <button mat-button (click)="removeItem(product)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+
+      <span class="text text--price">
+        Total price: {{price}}$
+      </span>
+
+      <a mat-flat-button color="primary" class="btn__checkout" routerLink="../checkout">Checkout</a>
+
+    </div>
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of let item of shoppingCartItems">
+      <div class="card">
+        <div class="card__header">
+          <a routerLink='../product/product._id' class="link link--card__header">
+            {{product.title}}
+          </a>
+        </div>
+        <img class="card__img" src="{{_api}}{{product.image}}" alt="device">
+        <div class="card__content">
+          <div class="card__content-inner">
+            <span class="text text--card">
+              {{product.text}}
+            </span>
+          </div>
+
+        </div>
+        <div class="card__footer">
+          <div class="card__price">
+            <span class="text text--price">
+              {{product.price}}$
+            </span>
+          </div>
+          <div class="card__price">
+            <button mat-flat-button (click)="remove(product)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="text text--price">
+              {{product.quantity}}
+            </span>
+            <button mat-flat-button (click)="add(product)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="card__price">
+            <span class="text text--price">
+              Total price {{product.quantity * product.price}}$
+            </span>
+          </div>
+          <div class="btn-group btn-group--card">
+            <button class="btn btn--card" (click)="removeItem(product)">
+              <span class="text">Remove</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

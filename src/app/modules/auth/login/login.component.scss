@@ -1,0 +1,12 @@
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $p-login-form;
+  min-height: $min-h-login-form;
+}
+
+.login__form .mat-form-field-wrapper {
+  width: $w-mat-field;
+}

@@ -1,0 +1,15 @@
+.add-product {
+  display: flex;
+  flex-direction: column;
+  width: $w-add-product;
+  .add-product__item {
+    margin-top: $mt-add-product-item;
+  }
+}
+
+.admin-product-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

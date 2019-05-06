@@ -1,0 +1,41 @@
+<div *ngIf="orders; else loading">
+  <mat-card [ngClass]="{
+    'bgc-expect':order.status === 'expect',
+    'bgc-complited':order.status === 'complited',
+    'bgc-canceled':order.status === 'canceled'
+  }" 
+    *ngFor='let order of orders' class="card__order">
+    <div class="order__header">
+      <mat-card-header>
+        <mat-card-title>Name: {{order.name}}</mat-card-title>
+        <mat-card-title>Phone: {{order.phone}}</mat-card-title>
+        <mat-card-subtitle>Email: {{order.email}}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <div class="order__content">
+      <mat-card-content *ngFor='let item of order.order'>
+        <div>Product: {{item.product_id.title}}</div>
+        <div>Quantity: {{item.quantity}}</div>
+        <div>Price: {{item.product_id.price}}$</div>
+        <div>Total: {{item.product_id.price*item.quantity}}$</div>
+      </mat-card-content>
+    </div>
+      
+    <mat-card-actions>
+      <mat-form-field>
+        <mat-select (selectionChange)="selectStatus($event, order._id)" [value]="order.status">
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+
+
+<ng-template #loading>
+  Loading ...
+</ng-template>

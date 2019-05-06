@@ -1,0 +1,34 @@
+<div class="admin-product-wrapper">
+
+  <a mat-raised-button routerLink="add-category" class="btn__add-product" color="primary">Add category</a>
+  <div class="admin-table mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="_id">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> _id </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let category"> {{category._id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell class="admin-tabel__cell" *matCellDef="let category"> {{category.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let category">
+        <a mat-raised-button routerLink="{{category._id}}">
+         Edit
+        </a>
+        <button mat-raised-button color="warn" (click)="deleteCategory(category._id)">
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>

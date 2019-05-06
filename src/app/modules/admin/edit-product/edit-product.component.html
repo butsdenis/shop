@@ -1,0 +1,87 @@
+<a routerLink="/admin/product" class="btn__add-product" mat-raised-button color="primary">Back</a>
+<form *ngIf="data | async; else loading" [formGroup]="editProductForm" class="add-product" (ngSubmit)="onSubmit()">
+  <mat-form-field class="add-product__item">
+    <input matInput placeholder="Title" formControlName="title">
+    <mat-error *ngIf="!editProductForm.get('title').valid && editProductForm.get('title').touched">
+      Please enter title
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="add-product__item">
+    <textarea matInput placeholder="information about product" formControlName="text"></textarea>
+    <mat-error *ngIf="!editProductForm.get('text').valid && editProductForm.get('text').touched">
+      Please enter information about product
+    </mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field class="add-product__item">
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let category of allCat"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(category)">
+        {{category}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="New category..."
+        #categoryInput
+        formControlName="category"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+
+  <!-- <mat-form-field class="add-product__item">
+    <input matInput placeholder="Category" [matAutocomplete]="auto" formControlName="category">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="!editProductForm.get('category').valid && editProductForm.get('category').touched">
+      Please enter category
+    </mat-error>
+  </mat-form-field>
+  <span>Your choice is: {{editProductForm.get('category').value | json}}</span> -->
+  
+  
+  
+  
+  <mat-form-field class="add-product__item">
+    <input matInput placeholder="Price" formControlName="price">
+    <mat-error *ngIf="editProductForm.get('price').errors?.required && editProductForm.get('price').touched">
+      Please enter Price
+    </mat-error>
+    <mat-error *ngIf="editProductForm.get('price').errors?.pattern">
+      It should be number
+    </mat-error>
+  </mat-form-field>
+
+
+  <input type="file" name='image' (change)="onFileSelected($event)">
+  <span *ngIf="!fileType" style="color: red">
+    Wrong file type. Only jpg/jpeg or png
+  </span>
+
+
+  <button class="btn__add-product" mat-raised-button color="primary">Upload</button>
+
+
+</form>
+
+<ng-template #loading>
+  Loading Product...
+</ng-template>

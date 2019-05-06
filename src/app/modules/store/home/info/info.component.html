@@ -1,0 +1,34 @@
+<div class="cards" *ngIf="product; else loading">
+  <mat-card class="products">
+    <mat-card-title>{{product.title}}</mat-card-title>
+    <img mat-card-image src="{{_api}}{{product.image}}" alt="img" class="card-img">
+    <mat-card-content>{{product.text}}</mat-card-content>
+  </mat-card>
+</div>
+
+<div class="left-review" *ngIf="isLogged()">
+  <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <textarea matInput placeholder="Review" formControlName="text"></textarea>
+    </mat-form-field>
+    <star-rating-control formControlName="rate" [starType]="'svg'"></star-rating-control>
+    <button type="submit" mat-raised-button color="primary">Left review</button>
+  </form>
+</div>
+
+<div class="reviews">
+  <mat-card class="review" *ngFor="let item of reviews">
+    <mat-card-header>
+      <!-- <img src="http://localhost:3000/{{item.user.avatar}}" mat-card-avatar class="example-header-image"> -->
+      <mat-card-title>{{item.user.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>{{item.text}}</mat-card-content>
+    <mat-card-footer>
+      <star-rating [starType]="'svg'" [rating]="[item?.rate]" [readOnly]="true"></star-rating>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<ng-template #loading>
+  Loading Product...
+</ng-template>

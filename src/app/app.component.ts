@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthenticationService, CartService } from './_sharing/services';
+import { Observable } from 'rxjs';
+import { Product } from './_sharing/models';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'shop';
+
+  public shoppingCartItems$: Observable<Product[]>;
+
+
+  constructor(
+    private _authService: AuthenticationService,
+    private _cartService: CartService
+  ) {
+
+    this.shoppingCartItems$ = this._cartService.getItems();
+  }
+
+  public isLogged = () => {
+    return this._authService.isLogin()
+  }
+
+  public logOut = () => {
+    this._authService.logout()
+  }
+
+  public getRole = () => {
+    return this._authService.getRole()
+  }
 }

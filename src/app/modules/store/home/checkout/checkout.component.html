@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row checkout__wrapper">
+    <div class="admin-table mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="title">
+          <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell class="admin-tabel__cell" *matCellDef="let product"> <a routerLink='../product/{{product._id}}'>{{product.title}}</a> </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.quantity}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <mat-header-cell class="admin-tabel__cell" *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell class="admin-tabel__cell" *matCellDef="let product"> {{product.quantity * product.price}}$
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let product">
+            <button mat-button (click)="removeItem(product)">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+    <span class="text text--price">
+      Total price: {{price}}$
+    </span>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Buying</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <form [formGroup]="buyingForm" class="login__form" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error *ngIf="!buyingForm.get('name').valid && buyingForm.get('name').touched">
+                  Please enter name
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="!buyingForm.get('email').valid && buyingForm.get('email').touched">
+              Please enter email
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [textMask]="{mask: mask, showMask: true}" type="text" formControlName="phone" />
+            <mat-error *ngIf="!buyingForm.get('phone').valid && buyingForm.get('phone').touched">
+              Please enter phone
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button [disabled]="loading || buyingForm.invalid || buyingForm.disabled" mat-raised-button
+              color="primary">Buying</button>
+          </div>
+          <div *ngIf="error" class="text__error">{{error}}</div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-group--card {
+  width: $w-btn-group-card;
+}
+
+.btn--card {
+  width: $w-btn-card;
+  padding: $p-btn-card;
+  border: $s-border-card solid $c-border-card;
+  &:hover {
+    background-color: $bgc-btn-card;
+  }
+  .text {
+    padding-left: $p-text-btn-card;
+  }
+}
+
+.mat-raised-button.btn__add-product {
+  width: $w-btn;
+  margin-top: $m-xxl;
+  display: flex;
+  justify-content: center;
+}
