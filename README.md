@@ -5,8 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Getting started
 
 ## Making requests to the backend API
-At first you need to start local backend server.
-The source code for the backend server can be found in the [shoppingCart_api](https://github.com/v1try/shoppingCart_api)
+Running API locally.
+The source code for the API can be found in the [shoppingCart_api](https://github.com/v1try/shoppingCart_api)
 
 Make sure you have the Angular CLI installed globally.
 Then run `npm install` to resolve all dependencies (might take a minute).
