@@ -5,12 +5,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Getting started
 
 ## Making requests to the backend API
-Running API locally.
+1 . Running API locally.
 The source code for the API can be found in the [shoppingCart_api](https://github.com/v1try/shoppingCart_api)
 
-Make sure you have the Angular CLI installed globally.
-Then run `npm install` to resolve all dependencies (might take a minute).
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Make sure you have the Angular CLI installed globally.
+3. Run `npm install` to resolve all dependencies (might take a minute).
+4. Run `ng serve` for a dev server. 
+5. Navigate to `http://localhost:4200/`. 
+The app will automatically reload if you change any of the source files.
 
 # Functionality overview
 The example application is an online shop.
