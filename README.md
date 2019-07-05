@@ -16,7 +16,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 The example application is an online shop.
 
 ## General functionality:
-1. Authenticate users via JWT (login/signup pages + logout button on settings page)
+1. Authenticate users via JWT
 2. CRUD users 
 3. CRUD Products
 4. CR*D Comments on products
